@@ -1,0 +1,56 @@
+package quiz21;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.function.Predicate;
+
+public class MainClass {
+	
+	private static final int Predicate = 0;
+
+	public static void main(String[] args) {
+		
+		//지역명, 규모구분, 연도, 월, 분양가격 -> 1행 4800개
+		/*
+		 * 1.버퍼리더 이용햇 한줄씩 읽습니다.
+		 * 2.split(",", 5)를 사용해서 Data객체에 한줄 단위로 저장을 하고
+		 * 3.List<Data>에 하나씩 추가를 합니다.
+		 * 
+		 * 4.람다식 이용해서 (지역:서울, 4분기중 9~12월, 분양 가격: 2000이상)인 객체만 뽑아서 
+		 * 새로운 리스트로 반환. -> toList.
+		 */
+		
+		String cvs = "C:\\Users\\user\\Documents\\카카오톡 받은 파일\\주택도시보증공사_전국 평균 분양가격.csv";
+		String data1;
+		
+		List<Object> list = new ArrayList<>();
+		try {BufferedReader br = new BufferedReader(new FileReader(cvs));
+			
+		while((data1 = br.readLine()) !=null) {
+			Data data3 = new Data();
+			
+			String[] data2 = data1.split(",", 5);
+			
+			list.add(data2);
+			
+			
+		}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		list.stream().forEach( a -> System.out.println(a.toString()));
+		
+		
+		
+		
+		
+		
+		
+	}
+
+}

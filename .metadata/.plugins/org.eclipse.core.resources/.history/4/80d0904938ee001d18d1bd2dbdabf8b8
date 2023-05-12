@@ -1,0 +1,47 @@
+package p0509_quiz21;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class ReGextQuiz02 {
+	
+	public static void main(String[] args) {
+		
+		String str = "123123-1231231 GS25(치킨마요) 4,400원";
+		String str2 = "123123-1231232 GS25(주부18단) 5,000원";
+		
+		String pattern1 = "[0-9-]{6,7}[0-9]{6,7}";
+		String pattern2 = "[A-Z]+[0-9]+";
+		//String pattern3 = "[(가-힣(18)]{2,10}";
+		String pattern3 = "\\(+[가-힝0-9]*\\)";
+		String pattern4 = "[0-9,]+원";
+		
+//		Matcher m = Pattern.compile(pattern1).matcher(str);
+//		Matcher m1 = Pattern.compile(pattern2).matcher(str);
+//		Matcher m2 = Pattern.compile(pattern3).matcher(str);
+//		Matcher m3 = Pattern.compile(pattern4).matcher(str);
+		
+		List<String> list = Arrays.asList(str, str2);
+		
+		for (int i = 0; i < list.size(); i++) {
+			
+			String a = list.get(i);
+			
+			Matcher x = Pattern.compile(pattern1).matcher(a);//1번째 패턴
+			Matcher y = Pattern.compile(pattern2).matcher(a);//2번째 패턴
+			Matcher z = Pattern.compile(pattern3).matcher(a);//3번째 패턴
+			Matcher k = Pattern.compile(pattern4).matcher(a);//4번째 패턴
+			
+			if(x.find()&&y.find()&&z.find()&&k.find()) {
+				
+				System.out.println("----------------------");
+				System.out.println(x.group());
+				System.out.println(y.group());
+				System.out.println(z.group());
+				System.out.println(k.group());
+			}
+		}
+	}
+}
