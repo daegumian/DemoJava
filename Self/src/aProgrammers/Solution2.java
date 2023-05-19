@@ -1,58 +1,85 @@
 package aProgrammers;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
-
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /*
-배열 만들기 2
+주사위 게임 3
 문제 설명
-정수 l과 r이 주어졌을 때, l 이상 r이하의 정수 중에서 숫자 "0"과 "5"로만 이루어진 모든 정수를 오름차순으로 저장한 배열을 return 하는 solution 함수를 완성해 주세요.
+1부터 6까지 숫자가 적힌 주사위가 네 개 있습니다. 네 주사위를 굴렸을 때 나온 숫자에 따라 다음과 같은 점수를 얻습니다.
 
-만약 그러한 정수가 없다면, -1이 담긴 배열을 return 합니다.
+네 주사위에서 나온 숫자가 모두 p로 같다면 1111 × p점을 얻습니다.
+세 주사위에서 나온 숫자가 p로 같고 나머지 다른 주사위에서 나온 숫자가 q(p ≠ q)라면 (10 × p + q)2 점을 얻습니다.
+주사위가 두 개씩 같은 값이 나오고, 나온 숫자를 각각 p, q(p ≠ q)라고 한다면 (p + q) × |p - q|점을 얻습니다.
+어느 두 주사위에서 나온 숫자가 p로 같고 나머지 두 주사위에서 나온 숫자가 각각 p와 다른 q, r(q ≠ r)이라면 q × r점을 얻습니다.
+네 주사위에 적힌 숫자가 모두 다르다면 나온 숫자 중 가장 작은 숫자 만큼의 점수를 얻습니다.
+네 주사위를 굴렸을 때 나온 숫자가 정수 매개변수 a, b, c, d로 주어질 때, 얻는 점수를 return 하는 solution 함수를 작성해 주세요.
 
 제한사항
-1 ≤ l ≤ r ≤ 1,000,000
+a, b, c, d는 1 이상 6 이하의 정수입니다.
 입출력 예
-l	r	result
-5	555	[5, 50, 55, 500, 505, 550, 555]
-10	20	[-1]
+a	b	c	d	result
+2	2	2	2	2222
+4	1	4	4	1681
+6	3	3	6	27
+2	5	2	6	30
+6	4	2	5	2
  */
 
 
-
 public class Solution2 {
-	public int[] solution(int l, int r) {
+
+	public int solution(int a, int b, int c, int d) {
+		int answer = 0;
 		List<Integer> list = new ArrayList<>();
-        for(int i = l; i<=r; i++) {
-            String str = i + "";
-            int count = 0;
-            for(int j = 0; j < str.length(); j++) {
-                if(str.charAt(j) == 48 || str.charAt(j) == 53) {
-                    count ++;
-                }
-            }
-            if(count == str.length()) {
-                list.add(i);
-            }
-        }
-        int[] answer = list.stream().mapToInt(i->i).toArray();
-        int[] empty = {-1};
-        if(answer.length == 0) return empty;
-        return answer;
-	}
 
+		list.add(a);
+		list.add(b);
+		list.add(c);
+		list.add(d);
 
+		Collections.sort(list);
+		if(list.get(1) == list.get(2) && list.get(0) < list.get(3)) {
+			Collections.reverse(list);
+		}
+		System.out.println(list.toString());
+		int num1 = list.get(0); //4
+		int num2 = list.get(2); //4
+
+		if(a == b && b == c && c == d && a == d) { // p = 4
+
+			answer = a*1111;
+		}
+		
+		else if(num1==list.get(1) && num1 == num2 && num2 != list.get(3)) { // p = 3, q = 1
+
+			answer = (10 * num1 + list.get(3))*(10 * num1 + list.get(3));
+		}
+		
+		else if(num1==list.get(1) && num2==list.get(3)) { // p = 2, q = 2
+
+			answer = (num1 + num2) * Math.abs((num1 - num2));
+		}
+
+		else if(num1==list.get(1) && num2 != list.get(3)) { // p = 2, q = 1, r = 1
+			answer = num2 * list.get(3);
+		}
+
+		else { // p = 1, q = 1, r = 1, s = 1
+
+			answer = num1;
+		}
+
+		return answer;
+	}		
 
 	public static void main(String[] args) {
 
 		Solution s = new Solution();
+		int[] arr = {1, 4, 2, 5, 3};
 
-		System.out.println(s.solution(5,555));
+		System.out.println(s.solution(2,5,	2,	6));
 
 
 	}
