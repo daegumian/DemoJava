@@ -77,6 +77,7 @@ public class ArrayListEx {
 		List<String> list2 = Arrays.asList("a", "b", "c", "d"); //Arrays.asList는 바로 배열을 만들어줌
 		System.out.println(list2.toString());
 		
+		
 		//리스트를 병합, 맨 끝에 (데이터를)합쳐줌
 		list.addAll(list2);
 		System.out.println(list.toString());
