@@ -24,6 +24,7 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="C:\Users\user\Documents\카카오톡 받은 파일\HolyMolyProject.zip"/>
 			<item value="C:\Users\user\Documents\카카오톡 받은 파일\mini.zip"/>
 			<item value="C:\Users\user\Documents\카카오톡 받은 파일\230530sujeong.zip"/>
 			<item value="C:\Users\user\Desktop\course\holymolycinema"/>
@@ -33,5 +34,9 @@
 	<section name="ChooseWorkspaceDialogSettings">
 		<item key="DIALOG_X_ORIGIN" value="654"/>
 		<item key="DIALOG_Y_ORIGIN" value="341"/>
+	</section>
+	<section name="WORKBENCH_SETTINGS">
+		<list key="ENABLED_TRANSFERS">
+		</list>
 	</section>
 </section>
