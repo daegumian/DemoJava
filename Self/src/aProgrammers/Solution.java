@@ -1,51 +1,65 @@
 package aProgrammers;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /*
-2의 영역
+배열 조각하기
 문제 설명
-정수 배열 arr가 주어집니다. 배열 안의 2가 모두 포함된 가장 작은 연속된 부분 배열을 return 하는 solution 함수를 완성해 주세요.
+정수 배열 arr와 query가 주어집니다.
 
-단, arr에 2가 없는 경우 [-1]을 return 합니다.
+query를 순회하면서 다음 작업을 반복합니다.
+
+짝수 인덱스에서는 arr에서 query[i]번 인덱스를 제외하고 배열의 query[i]번 인덱스 뒷부분을 잘라서 버립니다.
+홀수 인덱스에서는 arr에서 query[i]번 인덱스는 제외하고 배열의 query[i]번 인덱스 앞부분을 잘라서 버립니다.
+위 작업을 마친 후 남은 arr의 부분 배열을 return 하는 solution 함수를 완성해 주세요.
 
 제한사항
-1 ≤ arr의 길이 ≤ 100,000
-1 ≤ arr의 원소 ≤ 10
+5 ≤ arr의 길이 ≤ 100,000
+0 ≤ arr의 원소 ≤ 100
+1 ≤ query의 길이 < min(50, arr의 길이 / 2)
+query의 각 원소는 0보다 크거나 같고 남아있는 arr의 길이 보다 작습니다.
 입출력 예
-arr	result
-[1, 2, 1, 4, 5, 2, 9]	[2, 1, 4, 5, 2]
-[1, 2, 1]	[2]
-[1, 1, 1]	[-1]
-[1, 2, 1, 2, 1, 10, 2, 1]	[2, 1, 2, 1, 10, 2]
+arr	query	result
+[0, 1, 2, 3, 4, 5]	[4, 1, 2]	[1, 2, 3]
  */
 
 
 class Solution {
-	public int[] solution(int[] arr) {
-        int[] answer = {};
-        return answer;
-    }
+	public int[] solution(int[] arr, int[] query) {
+		
+		List<Integer> list = Arrays.stream(arr)
+                .boxed()
+                .collect(Collectors.toList());
+		
+		for (int i = 0; i < query.length; i++) {
+			if(query[i] % 2 != 0) {
+				list = list.subList(query[i], list.size());
+			}else {
+				list = list.subList(0, query[i]+1);
+			}
+		}
+		
 
+        return list.stream().mapToInt(i -> i).toArray();
     
-
-
-
-	public static void main(String[] args) {
-
-		Solution s = new Solution();
-		//		String[] my_string = {"progressive", "hamburger", "hammer", "ahocorasick"};
-		String my_string = "ProgrammerS123";
-				int[][] parts = {{1, 3}, {0, 4}};
-		int[] arr = {1, 2, 1, 4, 5, 2, 9};
-//		int[] arr2 = {1, 2, 3, 4, 5, 6, 7, 8, 9};
-		//		String[] intStrs = {"0123456789","9876543210","9999999999999"};
-
-		System.out.println(s.solution(arr));
-
-
 	}
+
+public static void main(String[] args) {
+
+	Solution s = new Solution();
+	//		String[] my_string = {"progressive", "hamburger", "hammer", "ahocorasick"};
+	//		String my_string = "ProgrammerS123";
+	//		int[][] parts = {{1, 3}, {0, 4}};
+	int[] arr = {0, 1, 2, 3, 4, 5, 6, 7};
+	int[] arr2 = {4, 1, 2};
+	//		String[] intStrs = {"0123456789","9876543210","9999999999999"};
+
+	System.out.println(s.solution(arr,arr2));
+
+
+}
 
 
 }
