@@ -1,6 +1,8 @@
 package aProgrammers;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -29,37 +31,24 @@ arr	query	result
 class Solution {
 	public int[] solution(int[] arr, int[] query) {
 		
-		List<Integer> list = Arrays.stream(arr)
-                .boxed()
-                .collect(Collectors.toList());
 		
-		for (int i = 0; i < query.length; i++) {
-			if(query[i] % 2 != 0) {
-				list = list.subList(query[i], list.size());
-			}else {
-				list = list.subList(0, query[i]+1);
-			}
-		}
-		
-
-        return list.stream().mapToInt(i -> i).toArray();
-    
+		return null;
 	}
 
-public static void main(String[] args) {
+	public static void main(String[] args) {
 
-	Solution s = new Solution();
-	//		String[] my_string = {"progressive", "hamburger", "hammer", "ahocorasick"};
-	//		String my_string = "ProgrammerS123";
-	//		int[][] parts = {{1, 3}, {0, 4}};
-	int[] arr = {0, 1, 2, 3, 4, 5, 6, 7};
-	int[] arr2 = {4, 1, 2};
-	//		String[] intStrs = {"0123456789","9876543210","9999999999999"};
+		Solution s = new Solution();
+		//		String[] my_string = {"progressive", "hamburger", "hammer", "ahocorasick"};
+		//		String my_string = "ProgrammerS123";
+		//		int[][] parts = {{1, 3}, {0, 4}};
+		int[] arr = {0, 1, 2, 3, 4, 5};
+		int[] arr2 = {4, 1, 2};
+		//		String[] intStrs = {"0123456789","9876543210","9999999999999"};
 
-	System.out.println(s.solution(arr,arr2));
+		System.out.println(s.solution(arr,arr2));
 
 
-}
+	}
 
 
 }
