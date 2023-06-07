@@ -1,57 +1,52 @@
 package aProgrammers;
 
-import java.util.Arrays;
+import java.util.*;
 
 /*
-배열 조각하기
+순서 바꾸기
 문제 설명
-정수 배열 arr와 query가 주어집니다.
-
-query를 순회하면서 다음 작업을 반복합니다.
-
-짝수 인덱스에서는 arr에서 query[i]번 인덱스를 제외하고 배열의 query[i]번 인덱스 뒷부분을 잘라서 버립니다.
-홀수 인덱스에서는 arr에서 query[i]번 인덱스는 제외하고 배열의 query[i]번 인덱스 앞부분을 잘라서 버립니다.
-위 작업을 마친 후 남은 arr의 부분 배열을 return 하는 solution 함수를 완성해 주세요.
+정수 리스트 num_list와 정수 n이 주어질 때, 
+num_list를 n 번째 원소 이후의 원소들과 n 번째까지의 원소들로 나눠 n 번째 원소 이후의 원소들을 n 번째까지의 원소들 앞에 붙인 리스트를 
+return하도록 solution 함수를 완성해주세요.
 
 제한사항
-5 ≤ arr의 길이 ≤ 100,000
-0 ≤ arr의 원소 ≤ 100
-1 ≤ query의 길이 < min(50, arr의 길이 / 2)
-query의 각 원소는 0보다 크거나 같고 남아있는 arr의 길이 보다 작습니다.
+2 ≤ num_list의 길이 ≤ 30
+1 ≤ num_list의 원소 ≤ 9
+1 ≤ n ≤ num_list의 길이
 입출력 예
-arr	query	result
-[0, 1, 2, 3, 4, 5]	[4, 1, 2]	[1, 2, 3]
+num_list	n	result
+[2, 1, 6]	1	[1, 6, 2]
+[5, 2, 1, 7, 5]	3	[7, 5, 5, 2, 1]
  */
 
-
 class Solution2 {
-	public int[] solution(int[] arr, int[] query) {
-		for (int i = 0; i < query.length; i++) {
-			
-			arr = query[i] % 2 != 0 ? arr = Arrays.copyOfRange(arr, query[i], arr.length+1) : Arrays.copyOfRange(arr, 0, query[i]+1);
-			
-		}
-		return arr;
+	public int[] solution(int[] num_list, int n) {
+
+        int[] copy = Arrays.copyOf(num_list, num_list.length * 2);
+        System.out.println(Arrays.toString(copy));
+        
+        System.arraycopy(num_list, 0, copy, num_list.length, num_list.length);
+        System.out.println(Arrays.toString(copy));
+        System.out.println(Arrays.toString(Arrays.copyOfRange(copy, n, n + num_list.length)));
+        return Arrays.copyOfRange(copy, n, n + num_list.length);
+
 	}
 
-public static void main(String[] args) {
 
-	Solution s = new Solution();
-	//		String[] my_string = {"progressive", "hamburger", "hammer", "ahocorasick"};
-	//		String my_string = "ProgrammerS123";
-	//		int[][] parts = {{1, 3}, {0, 4}};
-	int[] arr = {0, 1, 2, 3, 4, 5};
-	int[] arr2 = {4, 1, 2};
-	//		String[] intStrs = {"0123456789","9876543210","9999999999999"};
+	public static void main(String[] args) {
 
-	System.out.println(s.solution(arr,arr2));
+		Solution2 s = new Solution2();
+		//		String[] my_string = {"progressive", "hamburger", "hammer", "ahocorasick"};
+		//		String my_string = "ProgrammerS123";
+		//		int[][] parts = {{1, 3}, {0, 4}};
+		int[] num_list = {2,1,6};
+		int[] arr2 = {4, 1, 2};
+		//		String[] intStrs = {"0123456789","9876543210","9999999999999"};
+
+		System.out.println(s.solution(num_list, 1));
+
+
+	}
 
 
 }
-
-
-}
-
-
-
-

@@ -20,6 +20,7 @@ public class ArrayInsert {
 		
 		System.out.println(Arrays.toString(newArr));//{10,20,30,40,50,0}
 		System.out.println();
+		
 		//작업//2. 배열의 추가할 인덱스 ~ 마지막-1 까지 옮겨 담는 작업
 		//뒤에서(마지막 것 전)부터, -> 마지막 것부터 해봤자 값이 0이라 필요가 없다.arr의 길이만큼.
 		//바꿀 곳 전까지 잡아먹어 들어간다. ->그래야 넣을 공간이 생김!
