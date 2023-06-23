@@ -1,27 +1,24 @@
 package aProgrammers;
 
-import java.util.*;
+import java.lang.reflect.Array;
 
 /*
-n개 간격의 원소들
+특정한 문자를 대문자로 바꾸기
 문제 설명
-정수 리스트 num_list와 정수 n이 주어질 때, num_list의 첫 번째 원소부터 마지막 원소까지 n개 간격으로 저장되어있는 원소들을 차례로 담은 리스트를 return하도록 solution 함수를 완성해주세요.
+영소문자로 이루어진 문자열 my_string과 영소문자 1글자로 이루어진 문자열 alp가 매개변수로 주어질 때, my_string에서 alp에 해당하는 모든 글자를 대문자로 바꾼 문자열을 return 하는 solution 함수를 작성해 주세요.
 
 제한사항
-5 ≤ num_list의 길이 ≤ 20
-1 ≤ num_list의 원소 ≤ 9
-1 ≤ n ≤ 4
+1 ≤ my_string의 길이 ≤ 1,000
 입출력 예
-num_list	n	result
-[4, 2, 6, 1, 7, 6]	2	[4, 6, 7]
-[4, 2, 6, 1, 7, 6]	4	[4, 7]
+my_string	alp	result
+"programmers"	"p"	"Programmers"
+"lowercase"	"x"	"lowercase"
  */
-
+import java.util.*;
 class Solution {
-	public int[] solution(int[] num_list, int n) {
-        List<Integer> list = new ArrayList<>();
-        for (int i = 0; i < num_list.length; i += n) list.add(num_list[i]);
-        return list.stream().mapToInt( i -> i).toArray();
+	public String solution(String my_string, String alp) {
+        String answer = "";
+        return answer;
 	}
 
 
@@ -29,13 +26,17 @@ class Solution {
 
 		Solution s = new Solution();
 		//		String[] my_string = {"progressive", "hamburger", "hammer", "ahocorasick"};
-		//		String my_string = "ProgrammerS123";
-		//		int[][] parts = {{1, 3}, {0, 4}};
-		//String[] str_list = {"u", "u", "l", "r"};
-		int[] num_list = {4, 2, 6, 1, 7, 6};
+				String my_string = "programmers";
+				String alp = "p";
+		int[][] queries = {{0, 1}, {1,2}, {2,3}};
+		String[] strArr = {"AAA", "BBB", "CCC", "DDD"};
+		int[] num_list = {2, 3, 4, 5};
+		
+		boolean[] finished = {true, false, true, false};
+		String[] todo_list = {"problemsolving", "practiceguitar", "swim", "studygraph"};
 		//		String[] intStrs = {"0123456789","9876543210","9999999999999"};
 
-		System.out.println(s.solution(num_list, 2));
+		System.out.println(s.solution(my_string, alp ));
 
 
 	}
